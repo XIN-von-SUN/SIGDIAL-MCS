@@ -1,0 +1,140 @@
+reasons:
+- reason: control_weight
+  label: 0
+  examples: |
+    i am overweighted, so i want to lose weight
+    i want to control the weight
+    i don't want to be overweighted
+    can control the weight
+    efficient for me to lose weight
+    lose weight
+    control weight
+    make me have better appearance 
+    good appearance
+
+- reason: live_healthy
+  label: 1
+  examples: |
+    i want to be more healthy
+    exercise can make me healthier
+    exercise is healthy lifestyle for me
+    make me healthier
+    healthy lifestyle
+    exercise can give me healthy feeling
+
+- reason: against_diseases
+  label: 2
+  examples: |
+    exercise can help me overcome the sickness
+    exercise can help me better recover
+    against the disease
+    remove disease from me
+    better recover from disease
+    keep me away from disease
+    not easy to be ill
+    remove sickness
+    overcome the disease
+    recover faster from sickness
+
+- reason: decrease_risk_heart_attack
+  label: 3
+  examples: |
+    suitable activity can decrease the risk of heart attack
+    i do not want to have risk of heart attack
+    reduse risk of heart attack
+    good for my heart
+    healthy for my heart
+    decrease risk of heart disease
+    better recover from heart attack
+    enhance my heart
+
+- reason: reduce_stress
+  label: 4
+  examples: |
+    exercise can reduce my stress
+    I do not want to be stressful
+    reduce stress
+    Exercise can take my stress away
+    not stressful
+    decrease stress
+    exercise makes me calm down
+    not easy to be stressful
+    take stress from me
+
+- reason: reduce_depression
+  label: 5
+  examples: |
+    I was a little depressed, so exercise can help me reduce the depression
+    exercise is good way to defeat depression
+    reduce depression
+    exercise makes me happy
+    exercise can help me overcome the depression
+    take depression from me
+    decrease depression
+    not easy to be depressed
+
+- reason: better_sleep
+  label: 6
+  examples: |
+    I can have better sleep after exercise
+    I want to sleep better
+    I want to sleep well
+    I can have better sleep after exercise
+    better sleep
+    sleep well
+    sleep better
+    better sleep status
+    exercise can give me better sleep
+
+- reason: social
+  label: 7
+  examples: |
+    I can make many friends when I do sports
+    sport is good way to social
+    social with my friends
+    good way to make friends
+    make friends
+    good way to hangout with friends
+    socialize with others
+
+- reason: gym_body_fit
+  label: 8
+  examples: |
+    exercise can enhance my body and muscle
+    I want fitness
+    i want more muscle
+    i like go to the gym
+    i want better body
+    keep fit
+    keep fitness
+    enhance the body
+    I want to be strong
+    exercise can make people be strong and powerful
+    gym is good place to give you stronger body and muscle
+
+
+- reason: more_risk_heart_attack
+  label: 9
+  examples: |
+    sometimes exercise might increase the risk of heart attack
+    it will be a extra risk of heart attack
+    increase the risk of heart attack
+    bad for my heart
+    it will hury my heart
+    not good for my heart
+    bad for heart
+    increase risk of heart disease
+    it might cause heart attack
+    hurt for heart
+
+
+- reason: waste_time
+  label: 10
+  examples: |
+    waste of my time
+    i do not want to waste my time on exercise
+    i do not have much time on exercise
+    exercise is a waste of time
+    i don't have time for exercise
+    i don't want to spend much time on physical activity
+    waste time for me

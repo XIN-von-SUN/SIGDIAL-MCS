@@ -1,0 +1,149 @@
+stories:
+- story: step_count - no talk step_count
+  steps:
+  - action: utter_ask_permission_topic_step_count
+  - intent: deny
+  - action: utter_step_count_stop
+  - action: action_connector_change_topic_model
+
+- story: step_count - talk step_count / confirm goal / satisfy / complete
+  steps:
+  - action: utter_ask_permission_topic_step_count
+  - intent: trigger_goal_setting
+  - action: action_retrieval_db_goal
+  - slot_was_set:
+    - step_count_goal: 5000
+  - action: utter_goal_confirm
+  - intent: affirm
+  - action: action_retrieval_daily_step_count
+  - action: utter_ask_satisfactory_daily_step
+  - intent: affirm
+  - action: utter_ask_feeling_complete_step_goal
+  - intent: affirm
+  - action: utter_reflection_step_goal_complete
+  - action: action_connector_change_topic_model
+
+- story: step_count - talk step_count / confirm goal / satisfy / not complete
+  steps:
+  - action: utter_ask_permission_topic_step_count
+  - intent: trigger_goal_setting
+  - action: action_retrieval_db_goal
+  - slot_was_set:
+    - step_count_goal: 5000
+  - action: utter_goal_confirm
+  - intent: affirm
+  - action: action_retrieval_daily_step_count
+  - action: utter_ask_satisfactory_daily_step
+  - intent: affirm
+  - action: utter_ask_feeling_complete_step_goal
+  - intent: deny
+  - action: utter_reflection_step_goal_not_complete
+  - action: action_connector_change_topic_model
+
+- story: step_count - talk step_count / confirm goal / not satisfy
+  steps:
+  - action: utter_ask_permission_topic_step_count
+  - intent: trigger_goal_setting
+  - action: action_retrieval_db_goal
+  - slot_was_set:
+    - step_count_goal: 5000
+  - action: utter_goal_confirm
+  - intent: affirm
+  - action: action_retrieval_daily_step_count
+  - action: utter_ask_satisfactory_daily_step
+  - intent: deny
+  - action: utter_daily_step_not_satisfy
+  - action: action_connector_change_topic_model
+
+- story: step_count - talk step_count / not confirm goal / satisfy / complete
+  steps:
+  - action: utter_ask_permission_topic_step_count
+  - intent: trigger_goal_setting
+  - action: action_retrieval_db_goal
+  - slot_was_set:
+    - step_count_goal: 5000
+  - action: utter_goal_confirm
+  - intent: deny
+  - action: utter_goal_update
+  - action: goal_update_form
+  - active_loop: goal_update_form
+  - slot_was_set:
+    - requested_slot: null  
+  - action: utter_goal_reflection
+  - action: action_retrieval_daily_step_count
+  - action: utter_ask_satisfactory_daily_step
+  - intent: affirm
+  - action: utter_ask_feeling_complete_step_goal
+  - intent: affirm
+  - action: utter_reflection_step_goal_complete
+  - action: action_connector_change_topic_model
+
+- story: step_count - talk step_count / not confirm goal / satisfy / not complete
+  steps:
+  - action: utter_ask_permission_topic_step_count
+  - intent: trigger_goal_setting
+  - action: action_retrieval_db_goal
+  - slot_was_set:
+    - step_count_goal: 5000
+  - action: utter_goal_confirm
+  - intent: deny
+  - action: utter_goal_update
+  - action: goal_update_form
+  - active_loop: goal_update_form
+  - slot_was_set:
+    - requested_slot: null 
+  - action: utter_goal_reflection 
+  - action: action_retrieval_daily_step_count
+  - action: utter_ask_satisfactory_daily_step
+  - intent: affirm
+  - action: utter_ask_feeling_complete_step_goal
+  - intent: deny
+  - action: utter_reflection_step_goal_not_complete
+  - action: action_connector_change_topic_model
+
+- story: step_count - talk step_count / not confirm goal / not satisfy
+  steps:
+  - action: utter_ask_permission_topic_step_count
+  - intent: trigger_goal_setting
+  - action: action_retrieval_db_goal
+  - slot_was_set:
+    - step_count_goal: 5000
+  - action: utter_goal_confirm
+  - intent: deny
+  - action: utter_goal_update
+  - action: goal_update_form
+  - active_loop: goal_update_form
+  - slot_was_set:
+    - requested_slot: null  
+  - action: utter_goal_reflection
+  - action: action_retrieval_daily_step_count
+  - action: utter_ask_satisfactory_daily_step
+  - intent: deny
+  - action: utter_daily_step_not_satisfy
+  - action: action_connector_change_topic_model
+
+
+##########################################################################################################################################
+
+
+responses:
+  utter_ask_permission_topic_step_count:
+  - text: Let's talk about the role of step count in your personal daily life. 
+    buttons:
+    - title: "Yes!"
+      payload: "/trigger_goal_setting"
+    - title: "No, I don't want to"
+      payload: "/deny"
+    button_type: vertical
+  utter_step_count_stop:
+  - text: Seems it's not a good time to talk about step count. Never mind, we can talk about it later if you want!
+  utter_ask_satisfactory_daily_step:
+  - text: Are you happy with this amount of steps today so far?
+  utter_ask_feeling_complete_step_goal:
+  - text: Amazing! You did great. How do you feel about completing this goal? 
+  utter_reflection_step_goal_complete:
+  - text: Great to hear. You should be proud of yourself!
+  utter_reflection_step_goal_not_complete:
+  - text: Pity to know that you don't think you can achieve the goal.
+  utter_daily_step_not_satisfy:
+  - text: I'm sorry to hear that. But {daily_step} is not nothing!

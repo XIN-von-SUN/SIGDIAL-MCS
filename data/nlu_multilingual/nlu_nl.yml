@@ -1,0 +1,550 @@
+# version: "2.0"
+# nlu:
+# - intent: out_of_scope
+#   examples: |
+#     - I want to order food
+#     - What is 2 + 2?
+#     - Who's the US President?
+#     - booking ticket
+#     - Ich möchte Essen bestellen
+#     - Was ist 2 + 2?
+#     - Wer ist der US-Präsident?
+#     - Ticket buchen
+#     - Ik wil eten bestellen
+#     - Wat is 2 + 2?
+#     - Wie is de Amerikaanse president?
+#     - ticket boeken
+# - intent: greet
+#   examples: |
+#     - hey
+#     - hello, I am [Mike](name)
+#     - hi
+#     - hello there
+#     - good morning
+#     - good evening
+#     - morning
+#     - hey there
+#     - hey dude, me [David](name)
+#     - good morning
+#     - good evening
+#     - good afternoon
+#     - I am [Rose](name)!
+#     - [Jack](name) is back!
+#     - [Michael](name) is here.
+#     - hi [Jose](name) is here!
+#     - hi [mike](name) is back
+#     - [jack](name)
+#     - Hey
+#     - Hallo, ich bin [Mike](name)
+#     - Hi
+#     - Hallo
+#     - Guten Morgen
+#     - guten Abend
+#     - Sie da
+#     - Hey Alter, ich [David](name)
+#     - Guten Morgen
+#     - guten Abend
+#     - guten Nachmittag
+#     - Ich bin [Rose](name)!
+#     - [Jack](name) ist zurück!
+#     - [Michael](name) ist hier.
+#     - Hallo [Jose](name) ist da!
+#     - hallo [mike](name) ist zurück
+#     - [Buchse](name)
+#     - Hallo
+#     - hallo, ik ben [Mike](name)
+#     - Hoi
+#     - Hallo daar
+#     - Goedemorgen
+#     - goedeavond
+#     - Hoi
+#     - hey kerel, ik [David](name)
+#     - Goedemorgen
+#     - goedeavond
+#     - Goedemiddag
+#     - Ik ben [Rose](name)!
+#     - [Jack](name) is terug!
+#     - [Michael](name) is hier.
+#     - hallo [Jose](name) is hier!
+#     - hallo [mike](name) is terug
+#     - [jack](name)
+# - intent: goodbye
+#   examples: |
+#     - good by
+#     - see you later
+#     - good night
+#     - bye
+#     - goodbye
+#     - have a nice day
+#     - see you around
+#     - bye bye
+#     - see you later
+#     - ciao
+#     - Auf Wiedersehen
+#     - see you später
+#     - Gute Nacht
+#     - Wiedersehen
+#     - Auf Wiedersehen
+#     - schönen Tag noch
+#     - Bis demnächst
+#     - Tschüss
+#     - Bis später
+#     - tot ziens
+#     - tot later
+#     - Welterusten
+#     - doei
+#     - tot ziens
+#     - prettige dag
+#     - zie je later
+#     - tot ziens
+#     - tot ziens
+#     - doei
+# - intent: bot_challenge
+#   examples: |
+#     - are you a bot?
+#     - are you a human?
+#     - am I talking to a bot?
+#     - am I talking to a human?
+#     - who are you
+#     - who r u
+#     - Bist du ein Bot?
+#     - Bist du ein Mensch?
+#     - rede ich mit einem Bot?
+#     - Rede ich mit einem Menschen?
+#     - Wer bist du
+#     - ben je een robot?
+#     - ben je een mens?
+#     - praat ik met een bot?
+#     - praat ik met een mens?
+#     - wie ben jij
+# - intent: affirm
+#   examples: |
+#     - yes
+#     - y
+#     - indeed
+#     - of course
+#     - that sounds good
+#     - correct
+#     - sure
+#     - cool
+#     - certainly
+#     - why not?
+#     - why not
+#     - i do
+#     - indeed
+#     - !!
+#     - true!
+#     - Jawohl
+#     - ja
+#     - in der Tat
+#     - selbstverständlich
+#     - Das hört sich gut an
+#     - Korrekt
+#     - sicher
+#     - kühl
+#     - bestimmt
+#     - warum nicht?
+#     - warum nicht
+#     - Das tue ich
+#     - in der Tat
+#     - wahr!
+#     - Ja
+#     - inderdaad
+#     - natuurlijk
+#     - dat klinkt goed
+#     - juist
+#     - zeker
+#     - koel
+#     - zeker
+#     - waarom niet?
+#     - waarom niet
+#     - Ik doe
+#     - inderdaad
+#     - waar!
+# - intent: deny
+#   examples: |
+#     - no
+#     - n
+#     - never
+#     - I don't think so
+#     - don't like that
+#     - no way
+#     - not really
+#     - actually no
+#     - i would say no
+#     - not really!
+#     - nanhhh
+#     - na
+#     - of course no!
+#     - of course not!
+#     - I do not
+#     - Nein
+#     - n
+#     - noch nie
+#     - Ich glaube nicht
+#     - mag das nicht
+#     - auf keinen Fall
+#     - nicht wirklich
+#     - nicht wirklich
+#     - ich würde nein sagen
+#     - nicht wirklich!
+#     - nanhhh
+#     - n / A
+#     - natürlich nicht!
+#     - natürlich nicht!
+#     - Ich tu nicht
+#     - Nee
+#     - nooit
+#     - Ik denk het niet
+#     - vind dat niet leuk
+#     - echt niet
+#     - niet echt
+#     - eigenlijk niet
+#     - ik zou nee zeggen
+#     - niet echt!
+#     - nee
+#     - natuurlijk niet!
+#     - Ik doe niet
+# - intent: mood_trigger
+#   examples: |
+#     - I feel so good
+#     - feel great
+#     - feeling like a king
+#     - I am feeling very good
+#     - I am great
+#     - I am amazing
+#     - I am going to save the world
+#     - my day was horrible
+#     - I am sad
+#     - I don't feel very well
+#     - I am disappointed
+#     - super sad
+#     - I'm so sad
+#     - sad
+#     - very sad
+#     - unhappy
+#     - not good
+#     - not very good
+#     - extremly sad
+#     - so saad
+#     - so sad
+#     - i want to cry
+#     - wanna cry
+#     - fuck
+#     - wtf
+#     - Ich fühle mich so gut
+#     - sich großartig fühlen
+#     - sich wie ein König fühlen
+#     - mir geht es sehr gut
+#     - Ich bin großartig
+#     - Ich bin super
+#     - Ich werde die Welt retten
+#     - mein Tag war schrecklich
+#     - Ich bin traurig
+#     - Mir geht es nicht gut
+#     - Ich bin enttäuscht
+#     - super traurig
+#     - Ich bin so traurig
+#     - traurig
+#     - sehr traurig
+#     - unglücklich
+#     - nicht gut
+#     - nicht sehr gut
+#     - sehr traurig
+#     - so traurig
+#     - so traurig
+#     - Ich will weinen
+#     - ich könnte heulen
+#     - Scheiße
+#     - Ik voel me zo goed
+#     - voel me geweldig
+#     - zich een koning voelen
+#     - Ik voel me erg goed
+#     - Ik ben geweldig
+#     - Ik ben geweldig
+#     - Ik ga de wereld redden
+#     - mijn dag was verschrikkelijk
+#     - Ik ben verdrietig
+#     - Ik voel me niet zo lekker
+#     - Ik ben teleurgesteld
+#     - super verdrietig
+#     - Ik ben zo verdrietig
+#     - verdrietig
+#     - erg verdrietig
+#     - ongelukkig
+#     - niet goed
+#     - niet zo goed
+#     - extreem verdrietig
+#     - zo saad
+#     - zo jammer
+#     - Ik wil huilen
+#     - wil huilen
+#     - neuken
+# - intent: record
+#   examples: |
+#     - show me all history dialogues
+#     - track history
+#     - track
+#     - history dialogues
+#     - history
+#     - talk history
+#     - record
+#     - show me all record
+#     - zeig mir alle Geschichtsdialoge
+#     - Verlauf verfolgen
+#     - Spur
+#     - Geschichtsdialoge
+#     - Geschichte
+#     - Geschichte sprechen
+#     - aufzeichnen
+#     - zeig mir alle Aufzeichnungen
+#     - laat me alle geschiedenisdialogen zien
+#     - volg geschiedenis
+#     - spoor
+#     - geschiedenisdialogen
+#     - geschiedenis
+#     - praat geschiedenis
+#     - dossier
+#     - laat me alle records zien
+# - intent: start
+#   examples: |
+#     - hello world
+#     - start!
+#     - start
+#     - get start!
+#     - Get Started
+#     - Hallo Welt
+#     - Anfang!
+#     - fang an!
+#     - Loslegen
+#     - Hallo Wereld
+# - intent: stop
+#   examples: |
+#     - i do not want to continue
+#     - i want to quit
+#     - stop
+#     - exit
+#     - quit
+#     - stop the question
+#     - yes, stop
+#     - stop asking
+#     - stop ask
+#     - I dont want to answer your question
+#     - i don't want to continue
+#     - ich möchte nicht weitermachen
+#     - Ich möchte aufhören
+#     - halt
+#     - Ausfahrt
+#     - Verlassen
+#     - hör auf mit der frage
+#     - ja, halt
+#     - Hör auf zu fragen
+#     - hör auf zu fragen
+#     - Ich möchte deine Frage nicht beantworten
+#     - ich will nicht weiter
+#     - ik wil niet verder
+#     - ik wil stoppen
+#     - stop
+#     - Uitgang
+#     - ontslag nemen
+#     - stop de vraag
+#     - ja, stop
+#     - stop met vragen
+#     - stop met vragen
+#     - Ik wil je vraag niet beantwoorden
+#     - ik wil niet verder
+# - intent: step_count_trigger
+#   examples: |
+#     - I did 3000 steps today
+#     - 2000 steps completed!
+#     - 500 steps done!
+#     - 50000 steps!
+#     - Ich habe heute 3000 Schritte gemacht
+#     - 2000 Schritte abgeschlossen!
+#     - 500 Schritte geschafft!
+#     - 50000 Schritte!
+#     - Ik heb vandaag 3000 stappen gedaan
+#     - 2000 stappen voltooid!
+#     - 500 stappen gedaan!
+#     - 50000 stappen!
+# - intent: step_count_goal_update
+#   examples: |
+#     - doing 1000 steps less
+#     - i am not sure, maybe 500 steps less?
+#     - less steps please
+#     - i don't want to do such more steps, please reduce the step goal
+#     - i want less
+#     - less
+#     - i wanna less 
+#     - i wanna less step
+#     - step less
+#     - less step
+#     - 1000 Schritte weniger machen
+#     - Ich bin mir nicht sicher, vielleicht 500 Schritte weniger?
+#     - bitte weniger Schritte
+#     - ich möchte nicht mehr so viele Schritte machen, bitte das Schrittziel reduzieren
+#     - ich will weniger
+#     - weniger
+#     - ich will weniger
+#     - Ich will weniger Schritt
+#     - stufenlos
+#     - weniger Schritt
+#     - 1000 stappen minder doen
+#     - ik weet het niet zeker, misschien 500 stappen minder?
+#     - minder stappen alstublieft
+#     - ik wil zulke stappen niet meer doen, verlaag het stapdoel a.u.b.
+#     - ik wil minder
+#     - minder
+#     - ik wil minder
+#     - ik wil minder stappen
+#     - stap minder
+#     - minder stap
+#     - 1000 steps more
+#     - i am not sure, maybe 500 steps more?
+#     - more steps please
+#     - please increase the step goal for me!
+#     - 2000 steps more!
+#     - I want to do more steps
+#     - more
+#     - I want more
+#     - i wanna more
+#     - more step
+#     - increase step
+#     - 1000 Schritte mehr
+#     - Ich bin mir nicht sicher, vielleicht 500 Schritte mehr?
+#     - mehr Schritte bitte
+#     - bitte erhöhe das Stufenziel für mich!
+#     - 2000 Schritte mehr!
+#     - Ich möchte mehr Schritte machen
+#     - mehr
+#     - Ich will mehr
+#     - ich will mehr
+#     - mehr Schritt
+#     - Schritt erhöhen
+#     - 1000 stappen meer
+#     - ik weet het niet zeker, misschien 500 stappen meer?
+#     - meer stappen alstublieft
+#     - verhoog alstublieft het stapdoel voor mij!
+#     - 2000 stappen meer!
+#     - Ik wil meer stappen doen
+#     - meer
+#     - Ik wil meer
+#     - ik wil meer
+#     - meer stap
+#     - stap verhogen
+# - intent: weather_trigger
+#   examples: |
+#     - bad weather today
+#     - good weather outside
+#     - what a sunny day
+#     - what a cold day
+#     - cold day
+#     - bad day
+#     - good day
+#     - great day
+#     - so warm
+#     - sunny outsid
+#     - windy outside
+#     - what a beautiful day
+#     - schlechtes Wetter heute
+#     - schönes Wetter draußen
+#     - was für ein sonniger Tag
+#     - was für ein kalter Tag
+#     - kalter Tag
+#     - schlechter Tag
+#     - guten Tag
+#     - schöner Tag
+#     - so warm
+#     - sonnig draußen
+#     - windig draußen
+#     - was für ein schöner Tag
+#     - slecht weer vandaag
+#     - goed weer buiten
+#     - wat een zonnige dag
+#     - wat een koude dag
+#     - koude dag
+#     - slechte dag
+#     - Goededag
+#     - fantastische dag
+#     - zo warm
+#     - zonnig buiten
+#     - winderig buiten
+#     - wat een mooie dag
+# - intent: exercise_trigger
+#   examples: |
+#     - I never do exercise before
+#     - did some walk recently
+#     - some walk 
+#     - some sport 
+#     - play football
+#     - swim recently
+#     - no sport
+#     - no exercise
+#     - Ich mache noch nie Sport
+#     - habe kürzlich einen Spaziergang gemacht
+#     - etwas laufen
+#     - etwas Sport
+#     - Spiel Fußball
+#     - vor kurzem schwimmen
+#     - kein Sport
+#     - keine Bewegung
+#     - Ik sport nog nooit
+#     - laatst wat gewandeld
+#     - wat wandelen
+#     - wat sport
+#     - speel voetbal
+#     - recentelijk gezwommen
+#     - geen sport
+#     - geen oefening
+# - intent: obesity_trigger
+#   examples: |
+#     - I have obesity
+#     - I am a bit obese
+#     - I am not obese
+#     - A bit obese
+#     - no obese
+#     - Ich habe Fettleibigkeit
+#     - Ich bin ein bisschen fettleibig
+#     - Ich bin nicht fettleibig
+#     - Ein bisschen fettleibig
+#     - kein fettleibig
+#     - Ik heb obesitas
+#     - Ik ben een beetje zwaarlijvig
+#     - Ik ben niet zwaarlijvig
+#     - Een beetje zwaarlijvig
+#     - geen obesitas
+# - intent: profile_trigger
+#   examples: |
+#     - can we talk about me?
+#     - can we talk about profile?
+#     - talk profile
+#     - check profile
+#     - say something about me
+#     - give me some advice
+#     - tell me something about my profile
+#     - talk to me about the profile
+#     - give me tips on profile
+#     - talk myself
+#     - say sth about me
+#     - Können wir über mich reden?
+#     - Können wir über das Profil sprechen?
+#     - Gesprächsprofil
+#     - Profil prüfen
+#     - Sag etwas über mich
+#     - Gib mir einen Ratschlag
+#     - erzähl mir etwas über mein Profil
+#     - sprich mit mir über das Profil
+#     - Gib mir Tipps zum Profil
+#     - rede selbst
+#     - etw über mich sagen
+#     - kunnen we over mij praten?
+#     - kunnen we praten over profiel?
+#     - praatprofiel
+#     - controleer profiel
+#     - zeg iets over mij
+#     - geef me wat advies
+#     - vertel me iets over mijn profiel
+#     - praat met me over het profiel
+#     - geef me tips over profiel
+#     - praat mezelf
+#     - zeg iets over mij

@@ -1,0 +1,99 @@
+stories:
+- story: rating_importance_form - talk / high importance
+  steps:
+  - action: utter_ask_permission_topic_rating_importance
+  - intent: trigger_rating_importance
+  - action: rating_importance_form
+  - active_loop: rating_importance_form
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_rating_importance_judge
+  - action: utter_rating_importance_ask_if_show_video
+
+- story: rating_importance_form - talk / low importance
+  steps:
+  - action: utter_ask_permission_topic_rating_importance
+  - intent: trigger_rating_importance
+  - action: rating_importance_form
+  - active_loop: rating_importance_form
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_rating_importance_judge
+  - action: rating_importance_low_importance_form
+  - active_loop: rating_importance_low_importance_form
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_rating_importance_stop
+  - action: utter_rating_importance_ask_if_show_video
+
+- story: rating_importance_form - talk / medium importance
+  steps:
+  - action: utter_ask_permission_topic_rating_importance
+  - intent: trigger_rating_importance
+  - action: rating_importance_form
+  - active_loop: rating_importance_form
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_rating_importance_judge
+  - action: rating_importance_medium_importance_form
+  - active_loop: rating_importance_medium_importance_form
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_rating_importance_stop
+  - action: utter_rating_importance_ask_if_show_video
+
+# - story: rating_importance_form - no continue talk confidence
+#   steps:
+#   - action: utter_ask_permission_topic_rating_importance
+#   - intent: trigger_rating_importance
+#   - action: rating_importance_form
+#   - active_loop: rating_importance_form
+#   - intent: trigger_change_topic
+#   - action: action_deactivate_loop
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_connector_change_topic_model
+
+- story: rating_importance_form - show video
+  steps:
+  - action: utter_rating_importance_ask_if_show_video
+  - intent: affirm
+  - action: utter_rating_importance_show_video
+  - action: action_connector_change_topic_model
+
+- story: rating_importance_form - no video
+  steps:
+  - action: utter_rating_importance_ask_if_show_video
+  - intent: deny
+  - action: action_connector_change_topic_model
+
+- story: rating_importance_form - no talk / no video
+  steps:
+  - action: utter_ask_permission_topic_rating_importance
+  - intent: deny
+  - action: utter_rating_importance_ask_if_show_video
+  - intent: deny
+  - action: action_connector_change_topic_model
+
+
+##########################################################################################################################################
+
+
+responses:
+  utter_ask_permission_topic_rating_importance:
+  - text: Shall we talk about how important walking is to you?
+    buttons:
+    - title: "Sure!"
+      payload: '/trigger_rating_importance'
+    - title: "No, I don't want to."
+      payload: '/deny'
+
+  utter_rating_importance_ask_if_show_video:
+  - text: For a lot of people it is motivating to know the benefits of pa on their body. Would you be interested in an informational video about "changing physical activity can cause in your body"? 
+  utter_rating_importance_show_video:
+  # - attachment:
+  #     payload:
+  #       src: "https://www.youtube.com/watch?v=rBUjOY12gJA&t=172s"
+  #     type: video
+  - text: "Cool, let's go to the video!"

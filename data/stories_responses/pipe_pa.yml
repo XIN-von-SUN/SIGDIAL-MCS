@@ -1,0 +1,76 @@
+stories:
+- story: pa - no talk pa
+  steps:
+  - action: utter_ask_permission_topic_pa
+  - intent: deny
+  - action: utter_pa_stop
+  - action: action_connector_change_topic_model
+
+- story: pa - satisfy
+  steps:
+  - action: utter_ask_permission_topic_pa
+  - intent: trigger_pa
+  - action: utter_ask_pa_satisfactory_level
+  - intent: affirm
+  - action: utter_pa_satisfactory_reflection
+  - action: pa_satisfy_form
+  - active_loop: pa_satisfy_form
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_pa_complete_reflection
+  - action: utter_pa_satisfactory_final_reflection
+  - action: action_connector_change_topic_model
+
+- story: pa - no satisfy
+  steps:
+  - action: utter_ask_permission_topic_pa
+  - intent: trigger_pa
+  - action: utter_ask_pa_satisfactory_level
+  - intent: deny
+  - action: utter_pa_not_satisfactory_reflection
+  - action: pa_not_satisfy_form
+  - active_loop: pa_not_satisfy_form
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_pa_complete_reflection
+  - action: utter_pa_not_satisfactory_final_reflection
+  - action: action_connector_change_topic_model
+
+
+##########################################################################################################################################
+
+
+responses:
+  utter_ask_permission_topic_pa:
+  - text: Let's talk about the role of physical exercise in your personal life! 
+    buttons:
+    - title: "Yes!"
+      payload: "/trigger_pa"
+    - title: "No, I don't want to"
+      payload: "/deny"
+    button_type: vertical
+  utter_ask_pa_satisfactory_level:
+  - text: Do you like your current level of physical activity? Keep in mind that physical activity can mean a lot of things. We often talk about walking but it can also be gardening, taking stairs, go somewhere by bike, doing household chores, etc. Basically anything where you are not sitting or lying down!
+  utter_pa_stop:
+  - text: Seems it's not a good time to talk about physical activity. Never mind, we can talk about it later if you want!
+  
+  utter_pa_satisfactory_reflection:
+  - text: Good to hear you like your current level of physical activity! 
+  utter_ask_pa_satisfactory_thing:
+  - text: Can you give me one thing you like about your current lifestyle?
+  utter_ask_pa_satisfactory_improve:
+  - text: Can you give me one thing you would still like to improve about your level of physical activity?
+  utter_pa_satisfactory_final_reflection:
+  - text: It was nice to talk about your current level of physical activity. I am confident we can work together to keep you happy and satisfied with your lifestyle!
+  
+  utter_pa_not_satisfactory_reflection:
+  - text: Sorry to hear that!
+  utter_ask_pa_not_satisfactory_thing:
+  - text: Just wondering what gives you the feeling that you are not happy with your current level of physical activity?
+  utter_ask_pa_not_satisfactory_to_satisfy_thing:
+  - text: However, can you image or give one thing you like about your current lifestyle?
+  utter_pa_not_satisfactory_final_reflection:
+  - text: It was nice to talk to you about your current level of physical activity. Although you may not be satisfied with it yet, we can work together to help you reach your goals!
+  
+  
+  

@@ -1,0 +1,80 @@
+# stories:
+# - story: motivator - choose motivator / motivator_form / change topic
+#   steps: 
+#   - action: utter_ask_permission_topic_motivator
+#   - intent: trigger_motivator
+#   - action: utter_talk_motivators
+#   - intent: set_slot
+#   - action: utter_further_talk_motivator
+#   - action: utter_ask_permission_motivator_more_question
+#   - intent: affirm
+#   - action: motivator_form
+#   - active_loop: motivator_form
+#   - action: utter_motivator_form_reflection
+#   - action: utter_stop_talk_motivator
+#   - action: action_connector_change_topic_model
+
+# - story: motivator - choose motivator / no motivator_form / change topic
+#   steps:
+#   - action: utter_ask_permission_topic_motivator
+#   - intent: trigger_motivator
+#   - action: utter_talk_motivators
+#   - intent: set_slot
+#   - action: utter_further_talk_motivator
+#   - action: utter_ask_permission_motivator_more_question
+#   - intent: deny
+#   - action: utter_stop_talk_motivator
+#   - action: action_connector_change_topic_model
+
+
+# - story: motivator - no choose motivator
+#   steps:
+#   - action: utter_ask_permission_topic_motivator
+#   - intent: deny
+#   - action: utter_stop_talk_motivator
+#   - action: action_connector_change_topic_model
+  
+  
+# responses:
+#   utter_ask_permission_topic_motivator:
+#   - text: Shall we talk about motivators?
+#     buttons:
+#     - title: "Sure"
+#       payload: '/trigger_motivator'
+#     - title: "No, I don't want to."
+#       payload: '/deny'
+#   utter_talk_motivators:
+#   - text: Can you tell me what your biggest motivator among below is to be more phyisically active?
+#     buttons:
+#     - title: "Better sleep"
+#       payload: '/set_slot{{"motivator":"Better sleep"}}'
+#     - title: "Reduce stress"
+#       payload: '/set_slot{{"motivator":"Reduce stress"}}'
+#     - title: "Look good"
+#       payload: '/set_slot{{"motivator":"Look good"}}'
+#     - title: "Improve health"
+#       payload: '/set_slot{{"motivator":"Improve health"}}'
+#     - title: "Make more friends"
+#       payload: '/set_slot{{"motivator":"Social"}}'
+#     - title: "Experiencing_mental_benefits"
+#       payload: '/set_slot{{"motivator":"Experiencing mental benefit"}}'
+#     - title: "Important cardiac rehabilitation staff"
+#       payload: '/set_slot{{"motivator":"Important cardiac rehabilitation staff"}}'
+#     button_type: vertical
+#   utter_further_talk_motivator:
+#   - text: "{motivator} can indeed be very motivating!"
+#   utter_ask_permission_motivator_more_question:
+#   - text: "Great! Let's do some thinking together. Would you be up to answer some questions about {motivator}?"
+#   utter_motivator_form_reflection:
+#   - text: "Now I know your motivator! And we can talk about more about next time and to see if there are some changes! (Note: Will add more relevant reflections in next version!)"
+#   utter_stop_talk_motivator:
+#   - text: Call me anytime when you want to have a further talk about the motivator!
+  
+#   utter_ask_motivator_q1:
+#   - text: "Can you give 2 things that specifically worry you about the way you are living your life right now? (Note: Please input whatever in text, and the demo doesn't switch on the reflection module.)"
+#   utter_ask_motivator_q2:
+#   - text: What would your life look like in 1 year if you continue living this way??
+#   utter_ask_motivator_q3:
+#   - text: What is one thing you want to change?
+#   utter_ask_motivator_q4:
+#   - text: If you change this, what would your life look like in 1 year? 

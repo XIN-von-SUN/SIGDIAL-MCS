@@ -1,0 +1,121 @@
+version: "2.0"
+
+rules:
+
+# - rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+#   steps:
+#   - intent: nlu_fallback
+#   - action: utter_please_rephrase
+  
+# - rule: out-of-scope
+#   steps:
+#   - intent: out_of_scope
+#   - action: utter_out_of_scope
+
+# - rule: greeting
+#   steps:
+#   - intent: greet
+#   - action: utter_self_intro
+#   - action: utter_instruction
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+# - rule: Say 'I am a bot' anytime the user challenges
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot
+
+# - rule: record all conversational history
+#   steps:
+#   - intent: record
+#   - action: action_record_history
+
+# - rule: activate profile form
+#   steps:
+#   - action: utter_profile_ask_permission
+#   - intent: affirm
+#   - action: action_profile
+#   - action: utter_after_affirm
+#   - action: profile_form
+#   - active_loop: profile_form
+
+# - rule: finish and submit profile_form
+#   condition:
+#   - active_loop: profile_form
+#   steps:
+#   - action: profile_form
+#   - active_loop: null
+#   - action: action_submit_profile_form_to_DB
+#   - action: utter_profile_thank_survey
+#   - action: utter_profile_slots_confirmation
+
+# - rule: ask next topic after stop happy 
+#   steps:
+#   - action: action_connector_ask_permission_next_topic
+#   - intent: affirm
+#   - action: action_polarity
+#   - action: action_connector_confirm_next_topic
+
+# - rule: ask next topic after stop sad
+#   steps:
+#   - action: action_connector_ask_permission_next_topic
+#   - intent: deny
+#   - action: action_polarity
+#   - action: action_connector_confirm_next_topic
+
+
+# - rule: rating_importance_form
+#   steps:
+#   - intent: trigger_rating_importance
+#   - action: rating_importance_form
+#   - active_loop: rating_importance_form
+
+
+# - rule: rating_importance_form finished Submit form
+#   condition:
+#   # Condition that form is active.
+#   - active_loop: rating_importance_form
+#   steps:
+#   # Form is deactivated
+#   - action: rating_importance_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   # The actions we want to run when the form is submitted.
+#   - action: utter_rating_show_video
+
+
+# - rule: reset the DM
+#   steps:
+#   - action: action_connector_change_topic_model
+#   - action: action_session_start
+
+
+# - rule: rating_confidence_form - no slots 
+#   condition:
+#   - active_loop: rating_confidence_form
+#   steps:
+#   - action: rating_confidence_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_rating_confidence_stop
+
+
+# - rule: rating_importance_form - no slots
+#   condition:
+#   - active_loop: rating_importance_form
+#   steps:
+#   - action: rating_importance_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_rating_importance_stop
+  
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: trigger_change_topic
+  - action: action_connector_change_topic_model

@@ -1,0 +1,57 @@
+stories:
+# inconvenient
+- story: inconvenient - change time-confirm time slot
+  steps:
+  - intent: trigger_inconvenient
+  - action: utter_ask_if_have_time
+  - intent: affirm
+  - action: utter_ask_available_time_slot
+  - intent: time_slot
+  - action: utter_confirm_time_slot
+
+- story: inconvenient - change time-not sure time slot
+  steps:
+  - intent: trigger_inconvenient
+  - action: utter_ask_if_have_time
+  - intent: affirm
+  - action: utter_ask_available_time_slot
+  - intent: not_sure
+  - action: utter_not_sure_available_time
+
+- story: inconvenient - no time
+  steps:
+  - intent: trigger_inconvenient
+  - action: utter_ask_if_have_time
+  - intent: deny
+  - action: utter_stop_inconvenient
+
+
+# stop conversation and quit
+- story: stop intent - stop all the conversation and quit
+  steps:
+  - intent: stop
+  - action: utter_stop_for_all
+  - action: utter_goodbye
+
+
+##########################################################################################################################################
+
+
+responses:
+  # inconvenient
+  utter_ask_if_have_time:
+  - text: I'm sorry to hear that you are inconvenient. Do you think you will have time later today? 
+  utter_ask_available_time_slot:
+  - text: Great! Around what time would that be? 
+  utter_confirm_time_slot:
+  - text: Okay, I'll check up on you around {TIME} then. See you later!
+  utter_not_sure_available_time:
+  - text: That's fine, I'll try again at a random time later today. See you later!
+  utter_stop_inconvenient:
+  - text: It seems not be a good time. No problem, I will check you up sometime later! See you soon!
+
+# stop conversation and quit
+  utter_stop_for_all:
+  - text: Seems you want leave, no problem at all! Look forward to our next talk soon!
+  utter_goodbye:
+  - text: Nice talk to you! Bye, see you soon! 

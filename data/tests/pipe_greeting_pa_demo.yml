@@ -1,0 +1,109 @@
+# stories:
+# - story: start chat - good mood / talk / pa
+#   steps:
+#   - or:
+#     - intent: start
+#     - intent: greet
+#   - action: utter_self_intro
+#   - action: utter_greeting
+#   - intent: affirm
+#   - action: utter_greeting_reply_pos
+#   - action: utter_ask_if_talk 
+#   - intent: affirm
+#   - action: utter_ask_permission_topic_pa
+
+# - story: start chat - bad mood / talk / pa
+#   steps:
+#   - or:
+#     - intent: start
+#     - intent: greet
+#   - action: utter_self_intro
+#   - action: utter_greeting
+#   - intent: deny
+#   - action: utter_greeting_reply_neg
+#   - intent: affirm
+#   - action: utter_ask_permission_topic_pa
+
+# - story: start chat - good mood / no talk - stop greeting
+#   steps:
+#   - or:
+#     - intent: start
+#     - intent: greet
+#   - action: utter_self_intro
+#   - action: utter_greeting
+#   - intent: affirm
+#   - action: utter_greeting_reply_pos
+#   - action: utter_ask_if_talk 
+#   - intent: deny
+#   - action: utter_ask_if_have_time
+#   - intent: affirm
+#   - action: utter_ask_available_time_slot
+#   - intent: time_slot
+#   - action: utter_confirm_time_slot
+
+# - story: start chat - good mood / no talk - stop greeting
+#   steps:
+#   - or:
+#     - intent: start
+#     - intent: greet
+#   - action: utter_self_intro
+#   - action: utter_greeting
+#   - intent: affirm
+#   - action: utter_greeting_reply_pos
+#   - action: utter_ask_if_talk 
+#   - intent: deny
+#   - action: utter_ask_if_have_time
+#   - intent: deny
+#   - action: utter_stop_inconvenient
+
+# - story: start chat - bad mood / no talk - stop greeting
+#   steps:
+#   - or:
+#     - intent: start
+#     - intent: greet
+#   - action: utter_self_intro
+#   - action: utter_greeting
+#   - intent: deny
+#   - action: utter_greeting_reply_neg
+#   - intent: deny
+#   - action: utter_stop_greeting 
+
+
+# responses:
+#   utter_self_intro:
+#   - text: I am your health assistant, hope can help you build healthier lifestyle against the cardiac issues!
+#   utter_greeting:
+#   - text: How are you today?
+#   utter_greeting_reply_pos:
+#   - text: Great to hear that! 
+#   utter_greeting_reply_neg:
+#   - text: I'm sorry to hear that you are not feeling well at the moment. Do you still want to continue chatting?
+#   utter_ask_if_talk:
+#   - text: Can you make some time so we can have a talk? 
+#     # buttons:
+#     # - title: "Yes!"
+#     #   payload: "/affirm"
+#     # - title: "No, I don't want to"
+#     #   payload: "/trigger_inconvenient"
+#     # button_type: vertical
+#   utter_stop_greeting:
+#   - text: I hope you'll feel better soon! I'll check up on you later or you can call me anytime if you want a talk! Bye!
+  
+
+#   utter_ask_permission_topic_pa:
+#   - text: Nice! Let's talk about the role of physical activity in your personal life, and I'm going to ask you a couple of questions. Does that sound good to you? 
+#     buttons:
+#     - title: "Sure!"
+#       payload: "/trigger_pa"
+#     - title: "No, I don't want to"
+#       payload: "/deny"
+#     button_type: vertical
+  
+#   utter_ask_pa_satisfactory_level:
+#   - text: Do you like your current level of physical activity?
+#   utter_ask_pa_satisfactory_thing:
+#   - text: "Can you give me two things you like about your current lifestyle? (Note: Please input whatever in text, and the demo doesn't switch on the reflection module.)"
+#   utter_ask_pa_not_satisfactory_thing:
+#   - text: Can you give me two things you don't like about being not so physically active right now? 
+#   utter_pa_satisfactory_reflection:
+#   - text: Now I know your feelings about the physical activity. We can talk about some possible reasons why you have these feelings about PA later! (Conversations in this PA pipeline can be extended! But the demo will finish here and go into next topic!)
