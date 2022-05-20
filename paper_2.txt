@@ -1,7 +1,0 @@
-The design of dialogue flow and the generation of psychological dialogues are major challenges for conversational agents (chatbots) used in the domain of psychological counselling. 
-In this paper, we propose a new modular approach for developing the psycho-counselling chatbots called the Micro-Conversation Scheme (MC Scheme), which can isolate a single-topic or therapeutic target, 
-e.g., to settle a plan, to identify confidence of completing a goal, and design them as separate brief dialogues with average 10 interactions. 
-The scheme can modularise the development of  psycho-counselling chatbot which in results the dialogue can be easily modularised thereby reducing the complexity of the development and simultaneously allowing the extensibility of the chatbot. 
-The extensibility is established by a model called ’Connector’ to help the chatbot determine the availability and ranking of various micro-conversations based on the user context and dialogue history resulting in more personalised counselling. 
-Moreover, the MC scheme integrate a natural language generation (NLG) models as plugin to flexibly generate therapeutic utterances, such as reflection and affirmation. 
-Ultimately, we conduct an evaluation showing that our proposed scheme can address the challenges of complex-to-design and difficult-to-extend for counselling chatbots, as well as the inability of psycho-counselling chatbots to flexibly generate therapeutic utterances.
