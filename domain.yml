@@ -66,7 +66,6 @@ intents:
 entities:
 - number
 - name
-- sentiment
 - DATE
 - TIME
 
@@ -100,16 +99,6 @@ slots:
     initial_value: null
     auto_fill: true
     influence_conversation: false
-  rating_importance_continue:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false  
-  rating_importance_less_reason:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false  
   rating_importance_more_reason:
     type: text
     initial_value: null
@@ -251,12 +240,9 @@ responses:
       payload: '/trigger_rating_importance'
     - title: "No, I don't want to."
       payload: '/deny'
-
   utter_rating_importance_ask_if_show_video:
   - text: For a lot of people it is motivating to know the benefits of pa on their body. Would you be interested in an informational video about "changing physical activity can cause in your body"? 
   utter_rating_importance_show_video:
-  #     payload:
-  #     type: video
   - text: "Cool, let's go to the video!"
 
 
@@ -266,10 +252,11 @@ actions:
 - action_record_history
 - action_connector_change_topic_model
 - action_ask_importance_rate
-- action_rating_importance_judge
-- action_ask_rating_importance_less_reason
 - action_ask_rating_importance_more_reason
 - action_rating_importance_stop
+- action_ask_pa_satisfactory_thing
+- action_ask_pa_not_satisfactory_thing
+- action_ask_pa_not_satisfactory_to_satisfy_thing
 - action_pa_complete_reflection
 
 
@@ -303,20 +290,8 @@ forms:
       importance_rate:
       - not_intent: stop
         type: from_text
-
-  rating_importance_medium_importance_form:
-    required_slots:
-      rating_importance_less_reason:
-      - not_intent: stop
-        type: from_text
       rating_importance_more_reason:
       - not_intent: stop
         type: from_text
-    
-  rating_importance_low_importance_form:
-    required_slots:
-      rating_importance_more_reason:
-      - not_intent: stop
-        type: from_text
-
+ 
 e2e_actions: []

@@ -22,6 +22,7 @@ import random
 
 print(f'current path: {os.getcwd()}')
 
+
 ##################################################################################################
 
 
@@ -115,7 +116,7 @@ class ConnectorAskNextTopic(Action):
 
             if all_topic == []:
                 utter_no_topic_left = f"It seems we have talked a lot! I will catch you up next time! See you soon!"
-                dispatcher.utter_message(response="utter_no_topic_left")
+                dispatcher.utter_message(text=utter_no_topic_left)
                 return [SlotSet("all_topic", all_topic), SlotSet("next_topic", None)]
             else:
                 next_topic = random.choice(all_topic)
@@ -127,10 +128,10 @@ class ConnectorAskNextTopic(Action):
                             }
                 all_topic.remove(next_topic)
                 utter_stop_current_topic = f"Seems we can move on to the next topic!"
-                dispatcher.utter_message(response="utter_stop_current_topic")
+                dispatcher.utter_message(text=utter_stop_current_topic)
                 # dispatcher.utter_message(response=utter_dict[next_topic])
                 utter_ask_permission_response = utter_dict[next_topic]
-                return [SlotSet("all_topic", all_topic), SlotSet("next_topic", next_topic), SlotSet(next_topic, next_topic), FollowupAction(name=utter_ask_permission_response)] # FollowupAction(name='action_session_start')
+                return [SlotSet("all_topic", all_topic), SlotSet("next_topic", next_topic), SlotSet(next_topic, next_topic), FollowupAction(name=utter_ask_permission_response)]
 
 
 ##################################################################################################
@@ -164,53 +165,6 @@ class AskRatingImportance(Action):
         return []
 
 
-# class AskRatingImportanceContinue(Action):
-
-#     def name(self) -> Text:
-#         return "action_rating_importance_judge"
-
-#     async def run(
-#             self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
-#     ) -> List[Dict[Text, Any]]:
-
-#         importance_rate = tracker.get_slot("importance_rate")
-#         print(f'importance_rate is: {importance_rate} - {type(importance_rate)}')
-
-#         if int(importance_rate) < 2:
-#             print(f"case 1")
-#             dispatcher.utter_message(text=f"It seems like you don't think physical activity is that important to you, becasue you rate the importance as {importance_rate}.")
-#             return [FollowupAction(name='rating_importance_low_importance_form')]
-        
-#         elif int(importance_rate) > 8:
-#             print(f"case 2")
-#             dispatcher.utter_message(text=f"Wow, you rate the importance very high as {importance_rate}!")
-#             dispatcher.utter_message(text=f"Great! It seems like you already find that physical activity is extremely important to you.")
-#             return [FollowupAction(name='utter_rating_importance_ask_if_show_video')]
-        
-#         else:
-#             print(f"case 3")
-#             return [FollowupAction(name='rating_importance_medium_importance_form')]
-
-
-class AskRatingImportanceLessReason(Action):
-
-    def name(self) -> Text:
-        return "action_ask_rating_importance_less_reason"
-
-    async def run(
-            self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
-    ) -> List[Dict[Text, Any]]:
-
-        importance_rate = tracker.get_slot("importance_rate")
-        importance_rate_less = int(importance_rate) - 2
-
-        # dispatcher.utter_message(text=f"Ok, so you rate the importance as {importance_rate}.")
-        dispatcher.utter_message(text=f"Why are you at a {importance_rate} but not a {importance_rate_less}?")
-        dispatcher.utter_message(text=f"Tell me one reason why you think PA is important to you. Keep going!")
-
-        return []
-
-
 class AskRatingImportanceMoreReason(Action):
 
     def name(self) -> Text:
@@ -220,26 +174,14 @@ class AskRatingImportanceMoreReason(Action):
             self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
 
-        rating_importance_less_reason = tracker.get_slot("rating_importance_less_reason")
-        print(f'rating_importance_less_reason is: {rating_importance_less_reason}')
-
         importance_rate = tracker.get_slot("importance_rate")
         importance_rate_more = int(importance_rate) + 2
         
         response2 = f"Why did you rate it a {importance_rate} and not a {importance_rate_more}?"
         response3 = f"What would it take to rate it a {importance_rate_more} and make PA  more important to you?"
         
-        reflection = nlg_plugin(tracker, dispatcher) 
         dispatcher.utter_message(text=response2)
         dispatcher.utter_message(text=response3)
-        
-        # if rating_importance_less_reason != None:
-        #     reflection = nlg_plugin(tracker, dispatcher) 
-        #     dispatcher.utter_message(text=response2)
-        #     dispatcher.utter_message(text=response3)
-        # else:
-        #     dispatcher.utter_message(text=response2)
-        #     dispatcher.utter_message(text=response3)
 
         return []
 
@@ -257,14 +199,13 @@ class RatingImportanceStop(Action):
         importance_rate = tracker.get_slot("importance_rate")
         print(f'rating_importance_more_reason is: {rating_importance_more_reason}')
 
-        importance_rate_less = int(importance_rate) - 2
-        importance_rate_more = int(importance_rate) + 2
-
-        # reflection = f"Ok, I can see that. Sounds reasonable indeed."
         reflection = nlg_plugin(tracker, dispatcher) 
 
         response2 = f"Now I understand what can make you rate more, because you said: {rating_importance_more_reason}."
         dispatcher.utter_message(text=response2)
+        
+        response3 = f"The remaining questions of this 'importance about physical activity' pipeline are omitted here!"
+        dispatcher.utter_message(text=response3)
         
         return []
 
@@ -296,13 +237,11 @@ class AskPASatisfactoryImprove(Action):
             self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
 
-        # reflection = f'It sounds like you are pretty happy with your current level of physical activity!'
         reflection = nlg_plugin(tracker, dispatcher)
 
         dispatcher.utter_message(response="utter_ask_pa_satisfactory_improve")
   
         return []
-
 
 
 # # This custom action is for pa_not_satisfy_form
@@ -329,12 +268,10 @@ class AskPANotSatisfactoryToSatisfyThing(Action):
             self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
 
-        # reflection = f'I see how that can cause some negative feelings.'
         reflection = nlg_plugin(tracker, dispatcher)
         dispatcher.utter_message(response="utter_ask_pa_not_satisfactory_to_satisfy_thing")
   
         return []
-
 
 
 # # This custom action is for reflection when complete PA pipeline 

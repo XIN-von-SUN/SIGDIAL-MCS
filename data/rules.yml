@@ -7,7 +7,6 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
   
-  
 - rule: trigger_change_topic
   steps:
   - intent: trigger_change_topic

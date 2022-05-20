@@ -58,7 +58,6 @@ stories:
 - story: starter - no profile / good mood / talk 
   steps:
   - intent: start
-  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -76,7 +75,6 @@ stories:
 - story: starter - no profile / good mood / no talk 
   steps:
   - intent: start
-  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -94,7 +92,6 @@ stories:
 - story: starter - no profile / bad mood / talk 
   steps:
   - intent: start
-  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -112,7 +109,6 @@ stories:
 - story: starter - no profile / bad mood / no talk 
   steps:
   - intent: start
-  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -130,7 +126,6 @@ stories:
 - story: starter - profile / good mood / talk 
   steps:
   - intent: start
-  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: jack
   - action: utter_greeting
@@ -143,7 +138,6 @@ stories:
 - story: starter - profile / good mood / no talk 
   steps:
   - intent: start
-  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: mike
   - action: utter_greeting
@@ -156,7 +150,6 @@ stories:
 - story: starter - profile / bad mood / talk 
   steps:
   - intent: start
-  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: jos
   - action: utter_greeting
@@ -169,7 +162,6 @@ stories:
 - story: starter - profile / bad mood / no talk 
   steps:
   - intent: start
-  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: Michael
   - action: utter_greeting
@@ -224,33 +216,6 @@ stories:
 ##########################################################################################################################################
 
 
-# - story: rating_importance_form - talk / high importance
-#   steps:
-#   - action: utter_ask_permission_topic_rating_importance
-#   - intent: trigger_rating_importance
-#   - action: rating_importance_form
-#   - active_loop: rating_importance_form
-#   - slot_was_set:
-#     - requested_slot: null
-#   - action: action_rating_importance_judge
-#   - action: utter_rating_importance_ask_if_show_video
-
-# - story: rating_importance_form - talk / low importance
-#   steps:
-#   - action: utter_ask_permission_topic_rating_importance
-#   - intent: trigger_rating_importance
-#   - action: rating_importance_form
-#   - active_loop: rating_importance_form
-#   - slot_was_set:
-#     - requested_slot: null
-#   - action: action_rating_importance_judge
-#   - action: rating_importance_low_importance_form
-#   - active_loop: rating_importance_low_importance_form
-#   - slot_was_set:
-#     - requested_slot: null
-#   - action: action_rating_importance_stop
-#   - action: utter_rating_importance_ask_if_show_video
-
 - story: rating_importance_form - talk / medium importance
   steps:
   - action: utter_ask_permission_topic_rating_importance
@@ -259,14 +224,8 @@ stories:
   - active_loop: rating_importance_form
   - slot_was_set:
     - requested_slot: null
-  # - action: action_rating_importance_judge
-  - action: rating_importance_medium_importance_form
-  - active_loop: rating_importance_medium_importance_form
-  - slot_was_set:
-    - requested_slot: null
   - action: action_rating_importance_stop
   - action: utter_rating_importance_ask_if_show_video
-  
 
 - story: rating_importance_form - show video
   steps:
@@ -277,6 +236,7 @@ stories:
 
 - story: rating_importance_form - no video
   steps:
+  - action: action_rating_importance_stop
   - action: utter_rating_importance_ask_if_show_video
   - intent: deny
   - action: action_connector_change_topic_model
