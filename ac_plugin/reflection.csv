@@ -2,16 +2,6 @@ context_bot;context_user;sentiment;response_bot;label
 Why are you at a 6 but not a 4? Tell me one reason why you think PA is important to you. Keep going!;exercise can make me healthier;2;That's true. It is a good reason.;1
 Why did you rate it a 3 but not a 5? What would it take to rate it a 5 and make PA  more important to you?;It cost me much time.;0;Ok, I can see that. Sounds reasonable indeed.;1
 ;;;;
-Why are you at a 7 but not a 5? Tell me one strength of you that makes you confident in achieving your daily step count goal.;I like physical activity.;2;That's indeed something could help you with challenges. That is a good quality to have.;1
-Why did you rate it a 3 but not a 5? What would make you more confident in achieving your step count goal and make you rate your confidence a 5?;If I can have more time.;2;Ok, I understand. Sound reasonable indeed! Let's try and focus on that;1
-;;;;
-Let's think of a moment in time where you ultimately succeeded in doing something very difficult. What was the task or what did you have to do?;I am overfitting. But I diet and lose weight by doing exercise.;1;That does sound challenging.;1
-How did you ultimately succeed?;I did everything doctor asked me to do.;2;That's indeed one thing can help you go through challenging times. You seem very resilient.;1
-Now let's revisit that and talk more about how you felt. How did the challenge make you feel?;It made me quite stressful.;0;You had hard times, I can imagine. But you managed to succeed in the end!;1
-Now let's revisit that and talk more about how you felt. How did the challenge make you feel?;I am so proud of this experience.;2;Seems you are pretty happy for managing yourself to succeed in the end!;1
-I wonder, is there something you can think of that remediated these feelings?;Some exercise can make me feel a little bit better.;2;Sounds like a good way for you to remediated these feelings!;1
-I'm curious how you make sense of this experience, what did you learn?;Do more health activities can benefit for both your body and mentality.;2;Great to hear that you learned something from the challenge! I appreciate you telling me about your previous challenges and your feelings regarding these challenges. I do think you can learn a lot after you've experienced a challenge.;1
-;;;;
 Can you give me one thing you like about your current lifestyle about physical activity?;I have enough exercise every week I think.;2;It sounds like you are pretty happy with your current level of physical activity!;
 Can you give me one thing you would still like to improve about your level of physical activity?;I can do more and try different physical activities.;2;That is great! And indeed it can help you improve the level of PA!;
 Can you give me one thing you would still like to improve about your level of physical activity?;No, I don’t know;1;Okay, I am confident that that is something you can work on!;
