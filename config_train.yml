@@ -80,7 +80,7 @@ policies:
       max_history: 6
       # number_of_transformer_layers: 2
       # transformer_size: 256
-      epochs: 200
+      epochs: 150
       batch_size: 16
       # constrain_similarities: true
     # - name: UnexpecTEDIntentPolicy

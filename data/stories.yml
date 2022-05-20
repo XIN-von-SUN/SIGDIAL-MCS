@@ -55,54 +55,10 @@ stories:
 ##########################################################################################################################################
 
 
-- story: goal setting - no goal
-  steps:
-  - action: utter_ask_permission_topic_goal_setting
-  - intent: trigger_goal_setting
-  - action: action_retrieval_db_goal
-  - slot_was_set:
-    - step_count_goal: null
-  - action: goal_update_form
-  - active_loop: goal_update_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: utter_goal_reflection
-
-- story: goal setting - existed goal / goal affirm 
-  steps:
-  - action: utter_ask_permission_topic_goal_setting
-  - intent: trigger_goal_setting
-  - action: action_retrieval_db_goal
-  - slot_was_set:
-    - step_count_goal: 5000
-  - action: utter_goal_confirm
-  - intent: affirm
-  - action: utter_goal_reflection
-
-- story: goal setting - existed goal / goal deny
-  steps:
-  - action: utter_ask_permission_topic_goal_setting
-  - intent: trigger_goal_setting
-  - action: action_retrieval_db_goal
-  - slot_was_set:
-    - step_count_goal: 5000
-  - action: utter_goal_confirm
-  - intent: deny
-  - action: utter_goal_update
-  - action: goal_update_form
-  - active_loop: goal_update_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: utter_goal_reflection
-
-
-##########################################################################################################################################
-
-
 - story: starter - no profile / good mood / talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -120,7 +76,7 @@ stories:
 - story: starter - no profile / good mood / no talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -138,7 +94,7 @@ stories:
 - story: starter - no profile / bad mood / talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -156,7 +112,7 @@ stories:
 - story: starter - no profile / bad mood / no talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -174,7 +130,7 @@ stories:
 - story: starter - profile / good mood / talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: jack
   - action: utter_greeting
@@ -187,7 +143,7 @@ stories:
 - story: starter - profile / good mood / no talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: mike
   - action: utter_greeting
@@ -200,7 +156,7 @@ stories:
 - story: starter - profile / bad mood / talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: jos
   - action: utter_greeting
@@ -213,7 +169,7 @@ stories:
 - story: starter - profile / bad mood / no talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: Michael
   - action: utter_greeting
@@ -268,32 +224,32 @@ stories:
 ##########################################################################################################################################
 
 
-- story: rating_importance_form - talk / high importance
-  steps:
-  - action: utter_ask_permission_topic_rating_importance
-  - intent: trigger_rating_importance
-  - action: rating_importance_form
-  - active_loop: rating_importance_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_importance_judge
-  - action: utter_rating_importance_ask_if_show_video
+# - story: rating_importance_form - talk / high importance
+#   steps:
+#   - action: utter_ask_permission_topic_rating_importance
+#   - intent: trigger_rating_importance
+#   - action: rating_importance_form
+#   - active_loop: rating_importance_form
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_rating_importance_judge
+#   - action: utter_rating_importance_ask_if_show_video
 
-- story: rating_importance_form - talk / low importance
-  steps:
-  - action: utter_ask_permission_topic_rating_importance
-  - intent: trigger_rating_importance
-  - action: rating_importance_form
-  - active_loop: rating_importance_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_importance_judge
-  - action: rating_importance_low_importance_form
-  - active_loop: rating_importance_low_importance_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_importance_stop
-  - action: utter_rating_importance_ask_if_show_video
+# - story: rating_importance_form - talk / low importance
+#   steps:
+#   - action: utter_ask_permission_topic_rating_importance
+#   - intent: trigger_rating_importance
+#   - action: rating_importance_form
+#   - active_loop: rating_importance_form
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_rating_importance_judge
+#   - action: rating_importance_low_importance_form
+#   - active_loop: rating_importance_low_importance_form
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_rating_importance_stop
+#   - action: utter_rating_importance_ask_if_show_video
 
 - story: rating_importance_form - talk / medium importance
   steps:
@@ -303,26 +259,14 @@ stories:
   - active_loop: rating_importance_form
   - slot_was_set:
     - requested_slot: null
-  - action: action_rating_importance_judge
+  # - action: action_rating_importance_judge
   - action: rating_importance_medium_importance_form
   - active_loop: rating_importance_medium_importance_form
   - slot_was_set:
     - requested_slot: null
   - action: action_rating_importance_stop
   - action: utter_rating_importance_ask_if_show_video
-
-# - story: rating_importance_form - no continue talk confidence
-#   steps:
-#   - action: utter_ask_permission_topic_rating_importance
-#   - intent: trigger_rating_importance
-#   - action: rating_importance_form
-#   - active_loop: rating_importance_form
-#   - intent: trigger_change_topic
-#   - action: action_deactivate_loop
-#   - active_loop: null
-#   - slot_was_set:
-#     - requested_slot: null
-#   - action: action_connector_change_topic_model
+  
 
 - story: rating_importance_form - show video
   steps:
@@ -343,227 +287,6 @@ stories:
   - intent: deny
   - action: utter_rating_importance_ask_if_show_video
   - intent: deny
-  - action: action_connector_change_topic_model
-
-
-##########################################################################################################################################
-
-
-- story: rating_confidence_form - no talk
-  steps:
-  - action: utter_ask_permission_topic_rating_confidence
-  - intent: deny
-  - action: utter_rating_confidence_no_talk
-  - action: action_connector_change_topic_model
-  
-- story: rating_confidence_form - talk / high confidence
-  steps:
-  - action: utter_ask_permission_topic_rating_confidence
-  - intent: trigger_rating_confidence
-  - action: rating_confidence_form
-  - active_loop: rating_confidence_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_confidence_judge
-  - action: action_connector_change_topic_model
-
-- story: rating_confidence_form - talk / low confidence
-  steps:
-  - action: utter_ask_permission_topic_rating_confidence
-  - intent: trigger_rating_confidence
-  - action: rating_confidence_form
-  - active_loop: rating_confidence_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_confidence_judge
-  - action: rating_confidence_low_confidence_form
-  - active_loop: rating_confidence_low_confidence_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_confidence_stop
-  - action: action_connector_change_topic_model
-
-- story: rating_confidence_form - talk / medium confidence
-  steps:
-  - action: utter_ask_permission_topic_rating_confidence
-  - intent: trigger_rating_confidence
-  - action: rating_confidence_form
-  - active_loop: rating_confidence_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_confidence_judge
-  - action: rating_confidence_medium_confidence_form
-  - active_loop: rating_confidence_medium_confidence_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_confidence_stop
-  - action: action_connector_change_topic_model
-
-
-##########################################################################################################################################
-
-
-- story: self_efficacy - no talk
-  steps:
-  - action: utter_ask_permission_topic_self_efficacy
-  - intent: deny
-  - action: action_connector_change_topic_model
-
-- story: self_efficacy - talk / further talk
-  steps:
-  - action: utter_ask_permission_topic_self_efficacy
-  - intent: trigger_self_efficacy
-  - action: self_efficacy_form
-  - active_loop: self_efficacy_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_efficacy_further_talk
-  - intent: trigger_self_efficacy_further
-  - action: self_efficacy_further_form
-  - active_loop: self_efficacy_further_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_efficacy_complete_reflection
-  - action: action_connector_change_topic_model
-
-- story: self_efficacy - talk / no further talk
-  steps:
-  - action: utter_ask_permission_topic_self_efficacy
-  - intent: trigger_self_efficacy
-  - action: self_efficacy_form
-  - active_loop: self_efficacy_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_efficacy_further_talk
-  - intent: deny
-  - action: utter_self_efficacy_no_further_talk
-  - action: action_connector_change_topic_model
-
-
-##########################################################################################################################################
-
-
-- story: step_count - no talk step_count
-  steps:
-  - action: utter_ask_permission_topic_step_count
-  - intent: deny
-  - action: utter_step_count_stop
-  - action: action_connector_change_topic_model
-
-- story: step_count - talk step_count / confirm goal / satisfy / complete
-  steps:
-  - action: utter_ask_permission_topic_step_count
-  - intent: trigger_goal_setting
-  - action: action_retrieval_db_goal
-  - slot_was_set:
-    - step_count_goal: 5000
-  - action: utter_goal_confirm
-  - intent: affirm
-  - action: action_retrieval_daily_step_count
-  - action: utter_ask_satisfactory_daily_step
-  - intent: affirm
-  - action: utter_ask_feeling_complete_step_goal
-  - intent: affirm
-  - action: utter_reflection_step_goal_complete
-  - action: action_connector_change_topic_model
-
-- story: step_count - talk step_count / confirm goal / satisfy / not complete
-  steps:
-  - action: utter_ask_permission_topic_step_count
-  - intent: trigger_goal_setting
-  - action: action_retrieval_db_goal
-  - slot_was_set:
-    - step_count_goal: 5000
-  - action: utter_goal_confirm
-  - intent: affirm
-  - action: action_retrieval_daily_step_count
-  - action: utter_ask_satisfactory_daily_step
-  - intent: affirm
-  - action: utter_ask_feeling_complete_step_goal
-  - intent: deny
-  - action: utter_reflection_step_goal_not_complete
-  - action: action_connector_change_topic_model
-
-- story: step_count - talk step_count / confirm goal / not satisfy
-  steps:
-  - action: utter_ask_permission_topic_step_count
-  - intent: trigger_goal_setting
-  - action: action_retrieval_db_goal
-  - slot_was_set:
-    - step_count_goal: 5000
-  - action: utter_goal_confirm
-  - intent: affirm
-  - action: action_retrieval_daily_step_count
-  - action: utter_ask_satisfactory_daily_step
-  - intent: deny
-  - action: utter_daily_step_not_satisfy
-  - action: action_connector_change_topic_model
-
-- story: step_count - talk step_count / not confirm goal / satisfy / complete
-  steps:
-  - action: utter_ask_permission_topic_step_count
-  - intent: trigger_goal_setting
-  - action: action_retrieval_db_goal
-  - slot_was_set:
-    - step_count_goal: 5000
-  - action: utter_goal_confirm
-  - intent: deny
-  - action: utter_goal_update
-  - action: goal_update_form
-  - active_loop: goal_update_form
-  - slot_was_set:
-    - requested_slot: null  
-  - action: utter_goal_reflection
-  - action: action_retrieval_daily_step_count
-  - action: utter_ask_satisfactory_daily_step
-  - intent: affirm
-  - action: utter_ask_feeling_complete_step_goal
-  - intent: affirm
-  - action: utter_reflection_step_goal_complete
-  - action: action_connector_change_topic_model
-
-- story: step_count - talk step_count / not confirm goal / satisfy / not complete
-  steps:
-  - action: utter_ask_permission_topic_step_count
-  - intent: trigger_goal_setting
-  - action: action_retrieval_db_goal
-  - slot_was_set:
-    - step_count_goal: 5000
-  - action: utter_goal_confirm
-  - intent: deny
-  - action: utter_goal_update
-  - action: goal_update_form
-  - active_loop: goal_update_form
-  - slot_was_set:
-    - requested_slot: null 
-  - action: utter_goal_reflection 
-  - action: action_retrieval_daily_step_count
-  - action: utter_ask_satisfactory_daily_step
-  - intent: affirm
-  - action: utter_ask_feeling_complete_step_goal
-  - intent: deny
-  - action: utter_reflection_step_goal_not_complete
-  - action: action_connector_change_topic_model
-
-- story: step_count - talk step_count / not confirm goal / not satisfy
-  steps:
-  - action: utter_ask_permission_topic_step_count
-  - intent: trigger_goal_setting
-  - action: action_retrieval_db_goal
-  - slot_was_set:
-    - step_count_goal: 5000
-  - action: utter_goal_confirm
-  - intent: deny
-  - action: utter_goal_update
-  - action: goal_update_form
-  - active_loop: goal_update_form
-  - slot_was_set:
-    - requested_slot: null  
-  - action: utter_goal_reflection
-  - action: action_retrieval_daily_step_count
-  - action: utter_ask_satisfactory_daily_step
-  - intent: deny
-  - action: utter_daily_step_not_satisfy
   - action: action_connector_change_topic_model
 
 

@@ -113,13 +113,13 @@ if __name__ == '__main__':
     stories_path_list = [
                         current_path + '/data/stories_responses/pipe_general.yml',
                         current_path + '/data/stories_responses/pipe_connector.yml',
-                        current_path + '/data/stories_responses/pipe_goal_setting.yml',
+                        # current_path + '/data/stories_responses/pipe_goal_setting.yml',
                         current_path + '/data/stories_responses/pipe_greeting.yml',
                         current_path + '/data/stories_responses/pipe_pa.yml',
                         current_path + '/data/stories_responses/pipe_rating_importance.yml',
-                        current_path + '/data/stories_responses/pipe_rating_confidence.yml',
-                        current_path + '/data/stories_responses/pipe_self_efficacy.yml',
-                        current_path + '/data/stories_responses/pipe_step_count.yml',
+                        # current_path + '/data/stories_responses/pipe_rating_confidence.yml',
+                        # current_path + '/data/stories_responses/pipe_self_efficacy.yml',
+                        # current_path + '/data/stories_responses/pipe_step_count.yml',
                         ]
     write_stories_path = current_path + '/data/stories.yml'
     merge_stories(stories_path_list, write_stories_path)
@@ -135,17 +135,16 @@ if __name__ == '__main__':
     stories_path_list = [
                         current_path + '/data/stories_responses/pipe_general.yml',
                         current_path + '/data/stories_responses/pipe_connector.yml',
-                        current_path + '/data/stories_responses/pipe_goal_setting.yml',
+                        # current_path + '/data/stories_responses/pipe_goal_setting.yml',
                         current_path + '/data/stories_responses/pipe_greeting.yml',
                         current_path + '/data/stories_responses/pipe_pa.yml',
                         current_path + '/data/stories_responses/pipe_rating_importance.yml',
-                        current_path + '/data/stories_responses/pipe_rating_confidence.yml',
-                        current_path + '/data/stories_responses/pipe_self_efficacy.yml',
-                        current_path + '/data/stories_responses/pipe_step_count.yml',
+                        # current_path + '/data/stories_responses/pipe_rating_confidence.yml',
+                        # current_path + '/data/stories_responses/pipe_self_efficacy.yml',
+                        # current_path + '/data/stories_responses/pipe_step_count.yml',
                         ]    
     domain_write_path  = current_path + '/domain.yml'  # '/data/domain_editor.yml'
     merge_responses(stories_path_list, domain_write_path)
-
 
     # # transfor domain.yml
     # domain_editor_path  = current_path + '/data/domain_editor.yml'

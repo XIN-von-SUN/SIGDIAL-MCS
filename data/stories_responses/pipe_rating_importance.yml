@@ -1,30 +1,30 @@
 stories:
-- story: rating_importance_form - talk / high importance
-  steps:
-  - action: utter_ask_permission_topic_rating_importance
-  - intent: trigger_rating_importance
-  - action: rating_importance_form
-  - active_loop: rating_importance_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_importance_judge
-  - action: utter_rating_importance_ask_if_show_video
+# - story: rating_importance_form - talk / high importance
+#   steps:
+#   - action: utter_ask_permission_topic_rating_importance
+#   - intent: trigger_rating_importance
+#   - action: rating_importance_form
+#   - active_loop: rating_importance_form
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_rating_importance_judge
+#   - action: utter_rating_importance_ask_if_show_video
 
-- story: rating_importance_form - talk / low importance
-  steps:
-  - action: utter_ask_permission_topic_rating_importance
-  - intent: trigger_rating_importance
-  - action: rating_importance_form
-  - active_loop: rating_importance_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_importance_judge
-  - action: rating_importance_low_importance_form
-  - active_loop: rating_importance_low_importance_form
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_rating_importance_stop
-  - action: utter_rating_importance_ask_if_show_video
+# - story: rating_importance_form - talk / low importance
+#   steps:
+#   - action: utter_ask_permission_topic_rating_importance
+#   - intent: trigger_rating_importance
+#   - action: rating_importance_form
+#   - active_loop: rating_importance_form
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_rating_importance_judge
+#   - action: rating_importance_low_importance_form
+#   - active_loop: rating_importance_low_importance_form
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_rating_importance_stop
+#   - action: utter_rating_importance_ask_if_show_video
 
 - story: rating_importance_form - talk / medium importance
   steps:
@@ -34,26 +34,14 @@ stories:
   - active_loop: rating_importance_form
   - slot_was_set:
     - requested_slot: null
-  - action: action_rating_importance_judge
+  # - action: action_rating_importance_judge
   - action: rating_importance_medium_importance_form
   - active_loop: rating_importance_medium_importance_form
   - slot_was_set:
     - requested_slot: null
   - action: action_rating_importance_stop
   - action: utter_rating_importance_ask_if_show_video
-
-# - story: rating_importance_form - no continue talk confidence
-#   steps:
-#   - action: utter_ask_permission_topic_rating_importance
-#   - intent: trigger_rating_importance
-#   - action: rating_importance_form
-#   - active_loop: rating_importance_form
-#   - intent: trigger_change_topic
-#   - action: action_deactivate_loop
-#   - active_loop: null
-#   - slot_was_set:
-#     - requested_slot: null
-#   - action: action_connector_change_topic_model
+  
 
 - story: rating_importance_form - show video
   steps:

@@ -54,39 +54,11 @@ intents:
     use_entities: true
     ignore_entities:
       - sentiment
-- trigger_motivator:
-    use_entities: true
-    ignore_entities:
-      - sentiment
 - trigger_rating_importance:
     use_entities: true
     ignore_entities:
       - sentiment
-- trigger_rating_confidence:
-    use_entities: true
-    ignore_entities:
-      - sentiment
-- trigger_self_efficacy:
-    use_entities: true
-    ignore_entities:
-      - sentiment
-- trigger_self_efficacy_further:
-    use_entities: true
-    ignore_entities:
-      - sentiment
-- trigger_goal_setting:
-    use_entities: true
-    ignore_entities:
-      - sentiment
 - trigger_change_topic:
-    use_entities: true
-    ignore_entities:
-      - sentiment
-- trigger_step_count:
-    use_entities: true
-    ignore_entities:
-      - sentiment
-- step_count_goal_update:
     use_entities: true
     ignore_entities:
       - sentiment
@@ -95,10 +67,8 @@ entities:
 - number
 - name
 - sentiment
-- language_id
 - DATE
 - TIME
-- motivator
 
 slots:
   polarity:
@@ -125,35 +95,6 @@ slots:
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  step_count_goal:
-    type: text
-    initial_value: 5000
-    auto_fill: false
-    influence_conversation: true
-  update_goal_value:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: true
-  daily_step:
-    type: text
-    initial_value: 3000
-    auto_fill: true
-    influence_conversation: true
-  profile:
-    type: categorical
-    values:
-      - neg
-      - pos
-      - neu
-    initial_value: null
-    auto_fill: false
-    influence_conversation: true
-  language_id:
-    type: text
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
   importance_rate:
     type: text
     initial_value: null
@@ -170,76 +111,6 @@ slots:
     auto_fill: false
     influence_conversation: false  
   rating_importance_more_reason:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  efficacy_recall:
-    type: text
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-  efficacy_reason_for_challenge_success:
-    type: text
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-  efficacy_feel_of_challenge:
-    type: text
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-  efficacy_remediate_challenge:
-    type: text
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-  efficacy_learnt_from_challenge:
-    type: text
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-  confidence_rate:
-    type: text
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-  rating_confidence_continue:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false  
-  rating_confidence_less_reason:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false  
-  rating_confidence_more_reason:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  motivator:
-    type: text
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
-  motivator_q1:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  motivator_q2:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  motivator_q3:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  motivator_q4:
     type: text
     initial_value: null
     auto_fill: false
@@ -264,12 +135,7 @@ slots:
     initial_value: null
     auto_fill: false
     influence_conversation: false
-  left_topic:
-    type: list
-    initial_value: null
-    auto_fill: false
-    influence_conversation: true
-  talked_topic:
+  all_topic:
     type: list
     initial_value: null
     auto_fill: false
@@ -290,21 +156,6 @@ slots:
     auto_fill: false
     influence_conversation: false
   switch_rating_importance:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  switch_rating_confidence:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  switch_self_efficacy:
-    type: text
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-  switch_motivator:
     type: text
     initial_value: null
     auto_fill: false
@@ -330,23 +181,6 @@ responses:
   utter_stop_ask_new_topic:
   - text: Oh, it seems it's not a good time;) No problme at all, I will catch you up next day! Bye!
   
-  utter_ask_permission_topic_goal_setting:
-  - text: Let's talk about your daily step count. Does that sound good to you?
-    buttons:
-    - title: "Sure"
-      payload: '/trigger_goal_setting'
-    - title: "No, I don't want to."
-      payload: '/deny'
-  utter_goal_confirm:
-  - text: In an earlier conversation you told me your daily step count goal is {step_count_goal}. Is this still correct?
-  utter_goal_update:
-  - text: That is okay, we can change it.
-  utter_ask_update_goal_value:
-  - text: What do you want your new daily step count goal to be?
-  utter_goal_reflection:
-  - text: Great, so your daily step count goal is {update_goal_value}. That sounds good to me! Let's try and achieve this goal together. 
-  
-
   utter_self_intro:
   - text: Hi, I am the TIMELY chatbot, your health assistant, hope can help you build healthier lifestyle against the cardiac issues! I will help you with, for instance, trying to be more physically active! I will do this by checking in with you, having short talks, and do some exercises!
   utter_ask_name:
@@ -425,85 +259,17 @@ responses:
   #     type: video
   - text: "Cool, let's go to the video!"
 
-  utter_ask_permission_topic_rating_confidence:
-  - text: Shall we talk about how confident you are in reaching your daily step count goal tomorrow?
-    buttons:
-    - title: "Sure"
-      payload: '/trigger_rating_confidence'
-    - title: "No, I don't want to."
-      payload: '/deny'
-  utter_rating_confidence_no_talk:
-  - text: Seems it's not a good time to talk about your confidence. Never mind, we can talk about it later if you want!
- 
-  utter_ask_permission_topic_self_efficacy:
-  - text: I can help you with raising your confidence. Do you want to have a talk about this? 
-    buttons:
-    - title: "Sure!"
-      payload: '/trigger_self_efficacy'
-    - title: "No, I don't want to."
-      payload: '/deny'
-  utter_self_efficacy_no_further_talk:
-  - text: I appreciate you telling me about your previous challenges and your feelings regarding these challenges. I do think you can learn a lot after you've experienced a challenge!
-
-  utter_ask_permission_topic_step_count:
-  - text: Let's talk about the role of step count in your personal daily life. 
-    buttons:
-    - title: "Yes!"
-      payload: "/trigger_goal_setting"
-    - title: "No, I don't want to"
-      payload: "/deny"
-    button_type: vertical
-  utter_step_count_stop:
-  - text: Seems it's not a good time to talk about step count. Never mind, we can talk about it later if you want!
-  utter_ask_satisfactory_daily_step:
-  - text: Are you happy with this amount of steps today so far?
-  utter_ask_feeling_complete_step_goal:
-  - text: Amazing! You did great. How do you feel about completing this goal? 
-  utter_reflection_step_goal_complete:
-  - text: Great to hear. You should be proud of yourself!
-  utter_reflection_step_goal_not_complete:
-  - text: Pity to know that you don't think you can achieve the goal.
-  utter_daily_step_not_satisfy:
-  - text: I'm sorry to hear that. But {daily_step} is not nothing!
 
 
 actions:
 - '...'
-- action_submit_profile_form_to_DB
-- action_fill_slots_from_db
-- action_confirm_profile_after_db
 - action_record_history
-- action_reflection
-- action_polarity_reset
-- action_polarity
-- action_step_count
-- action_profile
 - action_connector_change_topic_model
-- action_connector_confirm_next_topic
-- action_talk_profile
-- action_pa_reason_nlu
-- action_pa_pro_reason_reflection
-- action_pa_con_reason_reflection
-- action_retrieval_db_profile
-- action_retrieval_db_goal
-- action_retrieval_daily_step_count
 - action_ask_importance_rate
 - action_rating_importance_judge
 - action_ask_rating_importance_less_reason
 - action_ask_rating_importance_more_reason
 - action_rating_importance_stop
-- action_ask_confidence_rate
-- action_rating_confidence_judge
-- action_ask_rating_confidence_less_reason
-- action_ask_rating_confidence_more_reason
-- action_rating_confidence_stop
-- action_ask_efficacy_recall
-- action_ask_efficacy_reason_for_challenge_success
-- action_ask_efficacy_feel_of_challenge
-- action_ask_efficacy_remediate_challenge
-- action_efficacy_further_talk
-- action_ask_efficacy_learnt_from_challenge
-- action_efficacy_complete_reflection
 - action_pa_complete_reflection
 
 
@@ -511,12 +277,6 @@ forms:
   name_form:
     required_slots:
       name:
-      - not_intent: stop
-        type: from_text
-
-  goal_update_form:
-    required_slots:
-      update_goal_value:
       - not_intent: stop
         type: from_text
 
@@ -556,63 +316,6 @@ forms:
   rating_importance_low_importance_form:
     required_slots:
       rating_importance_more_reason:
-      - not_intent: stop
-        type: from_text
-  
-  rating_confidence_form:
-    required_slots:
-      confidence_rate:
-      - not_intent: stop
-        type: from_text
-        
-  rating_confidence_medium_confidence_form:
-    required_slots:
-      rating_confidence_less_reason:
-      - not_intent: stop
-        type: from_text
-      rating_confidence_more_reason:
-      - not_intent: stop
-        type: from_text
-
-  rating_confidence_low_confidence_form:
-    required_slots:
-      rating_confidence_more_reason:
-      - not_intent: stop
-        type: from_text
-
-  self_efficacy_form:
-    required_slots:
-      efficacy_recall:
-      - not_intent: stop
-        type: from_text
-      efficacy_reason_for_challenge_success:
-      - not_intent: stop
-        type: from_text
-      efficacy_feel_of_challenge:
-      - not_intent: stop
-        type: from_text
-      efficacy_remediate_challenge:
-      - not_intent: stop
-        type: from_text
-      
-  self_efficacy_further_form:
-    required_slots:
-      efficacy_learnt_from_challenge:
-      - not_intent: stop
-        type: from_text
-  
-  motivator_form:
-    required_slots:
-      motivator_q1:
-      - not_intent: stop
-        type: from_text
-      motivator_q2:
-      - not_intent: stop
-        type: from_text
-      motivator_q3:
-      - not_intent: stop
-        type: from_text
-      motivator_q4:
       - not_intent: stop
         type: from_text
 

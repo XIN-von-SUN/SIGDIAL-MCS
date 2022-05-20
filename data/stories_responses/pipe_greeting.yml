@@ -2,7 +2,7 @@ stories:
 - story: starter - no profile / good mood / talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -20,7 +20,7 @@ stories:
 - story: starter - no profile / good mood / no talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -38,7 +38,7 @@ stories:
 - story: starter - no profile / bad mood / talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -56,7 +56,7 @@ stories:
 - story: starter - no profile / bad mood / no talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: null
   - action: utter_self_intro
@@ -74,7 +74,7 @@ stories:
 - story: starter - profile / good mood / talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: jack
   - action: utter_greeting
@@ -87,7 +87,7 @@ stories:
 - story: starter - profile / good mood / no talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: mike
   - action: utter_greeting
@@ -100,7 +100,7 @@ stories:
 - story: starter - profile / bad mood / talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: jos
   - action: utter_greeting
@@ -113,7 +113,7 @@ stories:
 - story: starter - profile / bad mood / no talk 
   steps:
   - intent: start
-  - action: action_retrieval_db_profile
+  # - action: action_retrieval_db_profile
   - slot_was_set:
     - name: Michael
   - action: utter_greeting
